@@ -1,7 +1,8 @@
 const resources = {
     overview: {
         title: "Come Follow Me Study Resources",
-        content: "Select a resource from the menu to learn how to use it for your Come Follow Me study."
+        content: "Select a resource from the menu to learn how to use it for your Come Follow Me study.",
+        actions: []
     },
     suno: {
         title: "Suno.com - Create Themed Songs",
@@ -21,7 +22,11 @@ const resources = {
                 <p class="font-semibold">Pro Tip:</p> 
                 <p>Create songs that ask questions about the lesson material to encourage reflection during personal study.</p>
             </div>
-        `
+        `,
+        actions: [
+            { text: "Visit Suno.com", url: "https://suno.ai", icon: "fa-music" },
+            { text: "Create New Song", url: "https://suno.ai/create", icon: "fa-plus" }
+        ]
     },
     institute: {
         title: "Institute Manuals - Scripture Insights",
@@ -46,7 +51,11 @@ const resources = {
                 <p class="font-semibold">Pro Tip:</p> 
                 <p>Institute manuals often contain diagrams and charts not found in the Come Follow Me manual that can help visualize complex doctrines or historical events.</p>
             </div>
-        `
+        `,
+        actions: [
+            { text: "Browse Institute Manuals", url: "https://www.churchofjesuschrist.org/study/manual/institute?lang=eng", icon: "fa-book" },
+            { text: "Current Manual", url: "https://www.churchofjesuschrist.org/study/manual/new-testament-study-guide-for-home-study-seminary-students-2023?lang=eng", icon: "fa-bookmark" }
+        ]
     },
     scriptures: {
         title: "Scriptures.byu.edu - General Authority Quotes",
@@ -72,7 +81,11 @@ const resources = {
                 <p class="font-semibold">Pro Tip:</p> 
                 <p>Look for quotes from recent General Conference talks to help connect historical scriptures to contemporary issues and challenges.</p>
             </div>
-        `
+        `,
+        actions: [
+            { text: "Search Scriptures", url: "https://scriptures.byu.edu", icon: "fa-search" },
+            { text: "Browse by Book", url: "https://scriptures.byu.edu/#/browse", icon: "fa-book-open" }
+        ]
     },
     notebooklm: {
         title: "NotebookLM - Create Podcasts",
@@ -99,7 +112,11 @@ const resources = {
                 <p class="font-semibold">Pro Tip:</p> 
                 <p>Create separate, shorter podcasts for children with simplified language and engaging questions they can think about throughout the week.</p>
             </div>
-        `
+        `,
+        actions: [
+            { text: "Open NotebookLM", url: "https://notebooklm.google.com", icon: "fa-notebook" },
+            { text: "Create New Notebook", url: "https://notebooklm.google.com/create", icon: "fa-plus" }
+        ]
     },
     interpreter: {
         title: "Interpreter Foundation Resources",
@@ -125,7 +142,12 @@ const resources = {
                 <p class="font-semibold">Pro Tip:</p> 
                 <p>The Interpreter Foundation often provides geographical and cultural context that can help family members visualize and better understand scriptural events.</p>
             </div>
-        `
+        `,
+        actions: [
+            { text: "Visit Interpreter Foundation", url: "https://interpreterfoundation.org", icon: "fa-globe" },
+            { text: "Come Follow Me Resources", url: "https://interpreterfoundation.org/come-follow-me/", icon: "fa-book-reader" },
+            { text: "Listen to Podcast", url: "https://interpreterfoundation.org/podcasts/", icon: "fa-podcast" }
+        ]
     }
 };
 
@@ -169,8 +191,48 @@ const resourceTitle = document.getElementById('resource-title');
 const resourceContent = document.getElementById('resource-content');
 const integrationSection = document.getElementById('integration-section');
 const integrationList = document.getElementById('integration-list');
+const actionButtons = document.getElementById('action-buttons');
+const menuToggle = document.getElementById('menu-toggle');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
 
-// Add click event listeners to all resource buttons
+// Toggle mobile menu
+function toggleMenu() {
+    const isOpen = sidebar.classList.contains('translate-x-0');
+    if (isOpen) {
+        sidebar.classList.remove('translate-x-0');
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+    } else {
+        sidebar.classList.remove('-translate-x-full');
+        sidebar.classList.add('translate-x-0');
+        overlay.classList.remove('hidden');
+    }
+}
+
+// Add menu toggle event listener
+menuToggle.addEventListener('click', toggleMenu);
+
+// Function to create action buttons
+function updateActionButtons(resourceId) {
+    actionButtons.innerHTML = '';
+    const actions = resources[resourceId].actions;
+    
+    actions.forEach(action => {
+        const button = document.createElement('a');
+        button.href = action.url;
+        button.target = "_blank";
+        button.rel = "noopener noreferrer";
+        button.className = "inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md";
+        button.innerHTML = `
+            <i class="fas ${action.icon} mr-2"></i>
+            ${action.text}
+        `;
+        actionButtons.appendChild(button);
+    });
+}
+
+// Update resource buttons click handler
 resourceButtons.forEach(button => {
     button.addEventListener('click', () => {
         const resourceId = button.getAttribute('data-resource');
@@ -187,14 +249,24 @@ resourceButtons.forEach(button => {
         resourceTitle.textContent = resources[resourceId].title;
         resourceContent.innerHTML = resources[resourceId].content;
         
+        // Update action buttons
+        updateActionButtons(resourceId);
+        
         // Update integration section
         if (resourceId === 'overview') {
             integrationSection.classList.add('hidden');
+            actionButtons.classList.add('hidden');
         } else {
             integrationSection.classList.remove('hidden');
+            actionButtons.classList.remove('hidden');
             integrationList.innerHTML = integrationSuggestions[resourceId]
                 .map(suggestion => `<li>${suggestion}</li>`)
                 .join('');
+        }
+
+        // Close mobile menu after selection
+        if (window.innerWidth < 1024) {
+            toggleMenu();
         }
     });
 }); 
