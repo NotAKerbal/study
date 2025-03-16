@@ -203,33 +203,43 @@ function toggleMenu() {
         sidebar.classList.remove('translate-x-0');
         sidebar.classList.add('-translate-x-full');
         overlay.classList.add('hidden');
+        document.body.classList.remove('menu-open');
     } else {
         sidebar.classList.remove('-translate-x-full');
         sidebar.classList.add('translate-x-0');
         overlay.classList.remove('hidden');
+        document.body.classList.add('menu-open');
     }
 }
 
-// Add menu toggle event listener
+// Add menu toggle event listeners
 menuToggle.addEventListener('click', toggleMenu);
+overlay.addEventListener('click', toggleMenu);
 
 // Function to create action buttons
 function updateActionButtons(resourceId) {
     actionButtons.innerHTML = '';
     const actions = resources[resourceId].actions;
     
-    actions.forEach(action => {
-        const button = document.createElement('a');
-        button.href = action.url;
-        button.target = "_blank";
-        button.rel = "noopener noreferrer";
-        button.className = "inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md";
-        button.innerHTML = `
-            <i class="fas ${action.icon} mr-2"></i>
-            ${action.text}
-        `;
-        actionButtons.appendChild(button);
-    });
+    if (actions.length > 0) {
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full';
+        
+        actions.forEach(action => {
+            const button = document.createElement('a');
+            button.href = action.url;
+            button.target = "_blank";
+            button.rel = "noopener noreferrer";
+            button.className = "inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md justify-center text-lg";
+            button.innerHTML = `
+                <i class="fas ${action.icon} mr-3 text-xl"></i>
+                ${action.text}
+            `;
+            buttonContainer.appendChild(button);
+        });
+        
+        actionButtons.appendChild(buttonContainer);
+    }
 }
 
 // Update resource buttons click handler

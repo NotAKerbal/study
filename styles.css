@@ -37,23 +37,36 @@ html, body {
 
 /* Mobile menu transitions */
 #sidebar {
+    transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* Action buttons styling */
+#action-buttons {
+    width: 100%;
+}
+
+#action-buttons a {
+    position: relative;
+    overflow: hidden;
+}
+
+#action-buttons a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
 }
 
-/* Action buttons responsive styling */
-@media (max-width: 640px) {
-    #action-buttons {
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-    
-    #action-buttons a {
-        width: 100%;
-        justify-content: center;
-    }
+#action-buttons a:hover::after {
+    transform: translateX(0);
 }
 
-/* Improved touch targets for mobile */
+/* Mobile optimizations */
 @media (max-width: 1024px) {
     .resource-btn {
         padding: 0.75rem 1rem;
@@ -62,10 +75,42 @@ html, body {
     #menu-toggle {
         padding: 0.5rem;
         margin: -0.5rem;
+        cursor: pointer;
+        z-index: 50;
+    }
+
+    /* Prevent content scroll when menu is open */
+    body.menu-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+    }
+
+    /* Ensure overlay covers entire screen */
+    #overlay {
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    /* Improve mobile menu appearance */
+    #sidebar {
+        height: 100vh;
+        padding-top: 4rem;
     }
 }
 
-/* Prevent body scroll when mobile menu is open */
-body.menu-open {
-    overflow: hidden;
+/* Improved button hover effects */
+.resource-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Desktop action button optimizations */
+@media (min-width: 1024px) {
+    #action-buttons a {
+        min-width: 200px;
+    }
+    
+    #action-buttons i {
+        font-size: 1.25rem;
+    }
 } 
