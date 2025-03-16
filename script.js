@@ -224,7 +224,7 @@ const resources = {
         actions: [
             { text: "Visit Interpreter Foundation", url: "https://interpreterfoundation.org", icon: "fa-globe" },
             { text: "Come Follow Me Resources", url: "https://interpreterfoundation.org/come-follow-me/", icon: "fa-book-reader" },
-            { text: "Listen to Podcast", url: "https://interpreterfoundation.org/podcasts/interpreter-radio/", icon: "fa-podcast" }
+            { text: "Listen to Podcast", url: "https://interpreterfoundation.org/podcasts/", icon: "fa-podcast" }
         ]
     }
 };
