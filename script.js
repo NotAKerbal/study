@@ -53,8 +53,8 @@ const resources = {
             </div>
         `,
         actions: [
-            { text: "Browse Institute Manuals", url: "https://www.churchofjesuschrist.org/study/manual/institute?lang=eng", icon: "fa-book" },
-            { text: "Current Manual", url: "https://www.churchofjesuschrist.org/study/manual/new-testament-study-guide-for-home-study-seminary-students-2023?lang=eng", icon: "fa-bookmark" }
+            { text: "Browse Institute Manuals", url: "https://www.churchofjesuschrist.org/study/books-and-lessons/institute?lang=eng", icon: "fa-book" },
+            { text: "Current Manual", url: "https://www.churchofjesuschrist.org/study/manual/doctrine-and-covenants-student-manual-2017?lang=eng", icon: "fa-bookmark" }
         ]
     },
     scriptures: {
@@ -83,8 +83,7 @@ const resources = {
             </div>
         `,
         actions: [
-            { text: "Search Scriptures", url: "https://scriptures.byu.edu", icon: "fa-search" },
-            { text: "Browse by Book", url: "https://scriptures.byu.edu/#/browse", icon: "fa-book-open" }
+            { text: "Search Scriptures", url: "https://scriptures.byu.edu", icon: "fa-search" }
         ]
     },
     notebooklm: {
@@ -146,7 +145,7 @@ const resources = {
         actions: [
             { text: "Visit Interpreter Foundation", url: "https://interpreterfoundation.org", icon: "fa-globe" },
             { text: "Come Follow Me Resources", url: "https://interpreterfoundation.org/come-follow-me/", icon: "fa-book-reader" },
-            { text: "Listen to Podcast", url: "https://interpreterfoundation.org/podcasts/", icon: "fa-podcast" }
+            { text: "Listen to Podcast", url: "https://interpreterfoundation.org/podcasts/interpreter-radio/", icon: "fa-podcast" }
         ]
     }
 };
