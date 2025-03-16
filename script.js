@@ -1,7 +1,86 @@
 const resources = {
     overview: {
         title: "Come Follow Me Study Resources",
-        content: "Select a resource from the menu to learn how to use it for your Come Follow Me study.",
+        content: `
+            <div class="space-y-8">
+                <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-3">Welcome to Your Study Companion</h2>
+                    <p class="text-lg">Enhance your Come Follow Me study with these powerful digital tools and resources. Each tool is designed to bring new insights and engagement to your scripture study.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                        <div class="text-blue-600 mb-4">
+                            <i class="fas fa-music text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Suno.ai</h3>
+                        <p>Create inspiring songs based on scripture stories and gospel principles.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                        <div class="text-blue-600 mb-4">
+                            <i class="fas fa-book text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Institute Manuals</h3>
+                        <p>Access in-depth doctrinal explanations and historical context.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                        <div class="text-blue-600 mb-4">
+                            <i class="fas fa-search text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Scriptures.byu.edu</h3>
+                        <p>Find relevant General Authority quotes and teachings for any scripture.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                        <div class="text-blue-600 mb-4">
+                            <i class="fas fa-microphone text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">NotebookLM</h3>
+                        <p>Create engaging podcasts and study materials for your family.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                        <div class="text-blue-600 mb-4">
+                            <i class="fas fa-globe text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Interpreter Foundation</h3>
+                        <p>Explore scholarly insights and deep doctrinal discussions.</p>
+                    </div>
+
+                    <div class="bg-blue-50 p-6 rounded-lg shadow-md border border-blue-100 hover:shadow-lg transition-shadow">
+                        <div class="text-blue-600 mb-4">
+                            <i class="fas fa-lightbulb text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Getting Started</h3>
+                        <p>Select any resource from the menu to learn how to integrate it into your study routine.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                    <h3 class="text-xl font-semibold mb-4">Why Use These Resources?</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Deepen your understanding of gospel principles through multiple perspectives</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Create engaging family study experiences using modern tools</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Access scholarly insights and historical context for richer scripture study</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Find creative ways to teach and remember gospel principles</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        `,
         actions: []
     },
     suno: {
